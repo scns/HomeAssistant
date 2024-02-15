@@ -1,0 +1,54 @@
+type: vertical-stack
+title: Wind Speed & Direction
+cards:
+  - square: false
+    columns: 2
+    type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: sensor.wind_speed_2
+            icon: mdi:weather-windy
+            name: Speed
+            icon_color: yellow
+          - type: custom:mushroom-entity-card
+            entity: sensor.wind_direction
+            icon: mdi:compass
+            name: Direction
+            icon_color: light-blue
+          - type: custom:mushroom-entity-card
+            entity: sensor.wind_speed_2_avg
+            name: Avg Speed
+            icon: mdi:weather-windy-variant
+      - type: vertical-stack
+        cards:
+          - type: custom:mushroom-entity-card
+            entity: sensor.wind_gust_2
+            icon: mdi:chart-sankey
+            name: Wind Speed
+            icon_color: pink
+          - type: custom:mushroom-entity-card
+            entity: sensor.max_daily_wind_gust_2
+            icon: mdi:wind-power-outline
+            name: Max Gust
+            icon_color: purple
+  - type: custom:compass-card
+    indicator_sensors:
+      - sensor: sensor.wind_direction
+        indicator:
+          type: arrow_inward
+    value_sensors:
+      - sensor: sensor.wind_speed_2
+    compass:
+      circle:
+        background_image: #***URL TO IMAGE***
+        background_opacity: 0.5
+      north:
+        show: true
+      east:
+        show: true
+      west:
+        show: true
+      south:
+        show: true

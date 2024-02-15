@@ -1,0 +1,96 @@
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:clock-weather-card
+    entity: weather.openweathermap
+    sun_entity: sun.sun
+    temperature_sensor: sensor.outdoor_temperature
+    weather_icon_type: line
+    animated_icon: true
+    forecast_days: 5
+    locale: nl
+    time_format: 24
+    date_pattern: cccc, dd.MM.yy
+    hide_today_section: false
+    hide_forecast_section: false
+    hide_clock: false
+    hide_date: false
+    hourly_forecast: false
+    use_browser_time: true
+  - show_current: false
+    show_forecast: true
+    name: ''
+    type: weather-forecast
+    entity: weather.ons_huisje
+    secondary_info_attribute: wind_speed
+    card_mod:
+      style: |
+        .type-weather-forecast {
+          padding-bottom: 0px;
+        }
+  - type: custom:apexcharts-card
+    apex_config:
+      chart:
+        height: 200px
+      annotations:
+        yaxis:
+          - 'y': 0.25
+            label:
+              style:
+                color: var(--secondary-text-color)
+                background: var(--secondary-background-color)
+              text: light
+          - 'y': 1
+            label:
+              style:
+                color: var(--secondary-text-color)
+                background: var(--secondary-background-color)
+              text: moderate
+          - 'y': 2.5
+            label:
+              style:
+                color: var(--secondary-text-color)
+                background: var(--secondary-background-color)
+              text: heavy
+    yaxis:
+      - decimals: 2
+        min: 0
+        max: ~0.5
+        apex_config:
+          tickAmount: 5
+    update_interval: 5m
+    graph_span: 2h
+    span:
+      start: minute
+    now:
+      show: true
+      color: var(--primary-text-color)
+    series:
+      - entity: sensor.neerslag_buienradar_regen_data
+        data_generator: |
+          return entity.attributes.data.split(' ').slice(0, -1).map(item => {
+            return [moment(item.split('|')[1], 'HH:mm').valueOf(), Math.pow(10, ((parseInt(item.split('|')[0] - 109) / 32)))]
+          })
+        color: '#6e9bd4'
+        type: area
+        name: Buienradar
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 10min
+        show:
+          legend_value: false
+      - entity: sensor.neerslag_buienalarm_regen_data
+        data_generator: |
+          return entity.attributes.data.precip.map((item, index) => {
+            return [moment.unix(entity.attributes.data.start).add(index*entity.attributes.data.delta, 's').valueOf(), item]
+          })
+        color: '#224179'
+        type: area
+        curve: smooth
+        stroke_width: 2
+        group_by:
+          func: avg
+          duration: 10min
+        name: Buienalarm
+        show:
+          legend_value: false
