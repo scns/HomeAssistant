@@ -133,7 +133,7 @@ action:
           "background": {{ background_color }},
           "icon": "{{ msg_icon }}",
           "textCase": "{{ text_case }}",
-          "scrollSpeed": {{ scroll_speed }}
+          "scrollSpeed": {{ scroll_speed }},
           "pushIcon": "{{ push_icon }}",
           "rainbow": {{ show_rainbow | lower }},
           "duration": {{ my_duration }},
