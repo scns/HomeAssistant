@@ -59,7 +59,6 @@ blueprint:
       default: "0"
     scroll_speed:
       name: Scroll Speed
-      Description: Scroll Speed
       default: "100"
     background_color:
       name: Background Colour
@@ -137,7 +136,6 @@ action:
           "pushIcon": "{{ push_icon }}",
           "rainbow": {{ show_rainbow | lower }},
           "duration": {{ my_duration }},
-          "lifetime": {{ lifetime }}
-          
+          "lifetime": {{ lifetime }}  
         }
 mode: single
