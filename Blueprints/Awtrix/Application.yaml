@@ -117,6 +117,7 @@ variables:
   lifetime: !input lifetime
   pos: !input position
   appname: !input appname
+  Scroll_speed: !input Scroll_speed
   monitored_entity: !input monitored_entity
 action:
   - service: mqtt.publish
