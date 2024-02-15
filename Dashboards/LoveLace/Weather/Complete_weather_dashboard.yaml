@@ -41,7 +41,16 @@
                 value: Wind thuis
             language: nl
             compass:
+              circle:
+                background_image: #IMAGEURL
+                background_opacity: 0.5
               north:
+                show: true
+              east:
+                show: true
+              west:
+                show: true
+              south:
                 show: true
           - type: entities
             entities:
@@ -92,7 +101,7 @@
               - sensor.monthly_rain_rate_2
             stat_types:
               - state
-            hide_legend: true
+            hide_legend: false
             logarithmic_scale: false
             days_to_show: 14
             title: Regen met max per maand
