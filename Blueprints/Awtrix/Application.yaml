@@ -1,0 +1,141 @@
+blueprint:
+  name: Schmm's - Awtrix-light custom application
+  description: Schmm's - Custom Awtrix-light application
+  domain: automation
+  input:
+    awtrix_entity:
+      name: Awtrix-light mqtt device
+      description: The device to be controlled
+      selector:
+        device:
+          multiple: false
+          filter:
+            - integration: mqtt
+              manufacturer: Blueforcer
+              model: "AWTRIX Light"
+    icon:
+      name: Icon number you want to use on device
+      default: "1"
+    appname:
+      name: Custom Application Name
+      description: An app name to refer/reference the application on the device
+      default: "Undefined"
+    monitored_entity:
+      name: Data field
+      description: Input to monitor/display on app
+      selector:
+        entity:
+          multiple: false
+    text:
+      name: Text you want to display on the device
+      default: "Text"
+    push_icon:
+      name: Push Icon
+      description: Icon behavior
+      selector:
+        select:
+          options:
+            - label: "The icon does not move"
+              value: "0"
+            - label: "The icon moves with the text and is no longer displayed"
+              value: "1"
+            - label: "The icon moves with the text but reappears when the text restarts"
+              value: "2"
+          mode: dropdown
+      default: "2"
+    text_case:
+      name: Text Output
+      description: Choose how the text should be displayed.
+      selector:
+        select:
+          options:
+            - label: "Use global setting"
+              value: "0"
+            - label: "All in uppercase"
+              value: "1"
+            - label: "Display as entered"
+              value: "2"
+          mode: dropdown
+      default: "0"
+    Scroll_speed:
+      name: Scroll Speed
+      Description: Scroll Speed
+      default: "100"
+    background_color:
+      name: Background Colour
+      description: Background Colour
+      selector:
+        color_rgb:
+      default: [0, 0, 0]
+    text_color:
+      name: Text Colour
+      description: Colour of the text
+      selector:
+        color_rgb:
+      default: [255, 255, 255]
+    show_rainbow:
+      name: Rainbow effect
+      description: Rainbow effect for notification text
+      selector:
+        boolean:
+      default: false
+    duration:
+      name: Duration (in Seconds)
+      description: Zero is the default notification time
+      default: "0"
+    lifetime:
+      name: Lifetime (in seconds)
+      description: Sets how long the app should stay alive before it gets removed from the app cycle automatically. 0 is infinite lifetime.
+      default: "0"
+    position:
+      name: Position
+      description: Position in the Awtrix cycle
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 20
+alias: Write Message on Awtrix-Light
+description: ""
+trigger:
+  - platform: time_pattern
+    minutes: /1
+condition: []
+variables:
+  device_id: !input awtrix_entity
+  my_display: |
+    {{ iif( device_attr(device_id, 'name_by_user') != none, device_attr(device_id, 'name_by_user'), device_attr(device_id, 'name') ) }}
+  msg_icon: !input icon
+  msg_text: !input text
+  push_icon: !input push_icon
+  text_case: !input text_case
+  show_rainbow: !input show_rainbow
+  background_color: !input background_color
+  text_color: !input text_color
+  my_toggle_helper: toggle_helper
+  my_duration: !input duration
+  lifetime: !input lifetime
+  pos: !input position
+  appname: !input appname
+  monitored_entity: !input monitored_entity
+action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: false
+      topic: "{{ my_display }}/custom/{{ appname }}"
+      payload: |-
+        {
+          "pos": {{pos}},
+          "text": "{{ msg_text }} {{ states(monitored_entity, with_unit=True) }}",
+          "color": {{text_color}},
+          "background": {{ background_color }},
+          "icon": "{{ msg_icon }}",
+          "textCase": "{{ text_case }}",
+          "pushIcon": "{{ push_icon }}",
+          "rainbow": {{ show_rainbow | lower }},
+          "duration": {{ my_duration }},
+          "lifetime": {{ lifetime }}
+          "scrollSpeed": {{ Scroll_speed }}
+        }
+mode: single
