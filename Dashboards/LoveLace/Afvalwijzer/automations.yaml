@@ -1,0 +1,40 @@
+## Afvelmelding voor de dag erna:
+
+alias: Afvalmelding Morgen
+description: Melding dag voor afval
+trigger:
+  - platform: time
+    at: "18:00:00"
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.afvalwijzer_tomorrow
+        state: geen
+action:
+  - service: notify.mobile_app_iphonie13
+    data:
+      message: "Afval Morgen: {{states.sensor.afvalwijzer_tomorrow.state}}"
+      title: Afval Morgen
+mode: single
+
+
+## Melding op de dag zelf
+
+alias: Afvalmelding Vandaag
+description: Melding dag voor afval
+trigger:
+  - platform: time
+    at: "07:00:00"
+condition:
+  - condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.afvalwijzer_today
+        state: geen
+action:
+  - service: notify.mobile_app_iphonie13
+    data:
+      message: "Afval Vandaag: {{states.sensor.afvalwijzer_today.state}}"
+      title: Afval Vandaag
+mode: single

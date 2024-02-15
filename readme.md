@@ -35,3 +35,11 @@ This is the complete code for a new tab in a lovelace dashboard
 4. you need to install the [horizon-card](https://github.com/rejuvenate/lovelace-horizon-card/)
 5. you need to install the [rain-gauge-card](https://github.com/t1gr0u/rain-gauge-card)
 6. you need to install the [mini-graph-card]https://github.com/kalkih/mini-graph-card
+
+
+## Afvalwijzer
+
+1. you need to install Afvalwijzer
+2. upload the pictures in the www folder
+3. use the yaml code (or make your own ;) )
+4. Use automations to send triggers

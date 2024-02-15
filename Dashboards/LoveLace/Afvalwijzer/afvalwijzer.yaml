@@ -1,0 +1,32 @@
+type: vertical-stack
+title: Afval
+cards:
+  - type: glance
+    entities:
+      - entity: sensor.afvalwijzer_today
+        name: Vandaag
+      - entity: sensor.afvalwijzer_tomorrow
+        name: Morgen
+      - entity: sensor.afvalwijzer_day_after_tomorrow
+        name: Overmorgen
+    state_color: false
+    sort:
+      attribute: days_until_collection_date
+      method: attribute
+      numeric: true
+  - type: glance
+    entities:
+      - entity: sensor.afvalwijzer_gft
+        name: GFT
+        image: /local/GFT.png
+      - entity: sensor.afvalwijzer_pmd
+        name: PMD
+        image: /local/PMD.png
+      - entity: sensor.afvalwijzer_restafval
+        name: Restafval
+        image: /local/Restafval.png
+    state_color: null
+    sort:
+      attribute: days_until_collection_date
+      method: attribute
+      numeric: true
