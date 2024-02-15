@@ -57,7 +57,7 @@ blueprint:
               value: "2"
           mode: dropdown
       default: "0"
-    Scroll_speed:
+    scroll_speed:
       name: Scroll Speed
       Description: Scroll Speed
       default: "100"
@@ -109,6 +109,7 @@ variables:
   msg_text: !input text
   push_icon: !input push_icon
   text_case: !input text_case
+  scroll_speed: !input scroll_speed
   show_rainbow: !input show_rainbow
   background_color: !input background_color
   text_color: !input text_color
@@ -117,7 +118,6 @@ variables:
   lifetime: !input lifetime
   pos: !input position
   appname: !input appname
-  Scroll_speed: !input Scroll_speed
   monitored_entity: !input monitored_entity
 action:
   - service: mqtt.publish
@@ -133,10 +133,11 @@ action:
           "background": {{ background_color }},
           "icon": "{{ msg_icon }}",
           "textCase": "{{ text_case }}",
+          "scrollSpeed": {{ scroll_speed }}
           "pushIcon": "{{ push_icon }}",
           "rainbow": {{ show_rainbow | lower }},
           "duration": {{ my_duration }},
           "lifetime": {{ lifetime }}
-          "scrollSpeed": {{ Scroll_speed }}
+          
         }
 mode: single
