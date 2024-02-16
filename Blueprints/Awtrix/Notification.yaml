@@ -1,6 +1,6 @@
 blueprint:
-  name: Awtrix-light notification
-  description: Write some text on Awtrix-light device
+  name: Schmm's - Awtrix-light notification
+  description: Schmm's - Write some text on Awtrix-light device
   domain: automation
   input:
     awtrix_entity:
