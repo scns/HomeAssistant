@@ -1,0 +1,118 @@
+blueprint:
+  name: Awtrix-light notification
+  description: Write some text on Awtrix-light device
+  domain: automation
+  input:
+    awtrix_entity:
+      name: Awtrix-light mqtt device
+      description: The device to be controlled
+      selector:
+        device:
+          multiple: false
+          filter:
+            - integration: mqtt
+              manufacturer: Blueforcer
+              model: "AWTRIX Light"
+    icon:
+      name: Icon number you want to use on device
+      default: "1"
+    text:
+      name: Text you want to display on the device
+      default: "DumbDumb"
+    push_icon:
+      name: Push Icon
+      description: Icon behavior
+      selector:
+        select:
+          options:
+            - label: "The icon does not move"
+              value: "0"
+            - label: "The icon moves with the text but is no longer displayed"
+              value: "1"
+            - label: "The icon moves with the text and reappears when the text repeats"
+              value: "2"
+          mode: dropdown
+      default: "2"
+    text_case:
+      name: Text Output
+      description: Choose how the text should be displayed (unclear why 2 would not always be the default).
+      selector:
+        select:
+          options:
+            - label: "Use global setting"
+              value: "0"
+            - label: "Force uppercase"
+              value: "1"
+            - label: "Display as entered"
+              value: "2"
+          mode: dropdown
+      default: "2"
+    scroll_speed:
+      Description: "100 is normal speed, below is slower above is faster"
+      name: Scroll Speed
+      default: "100"
+    background_color:
+      name: Background Colour
+      description: Background Colour
+      selector:
+        color_rgb:
+      default: [0, 0, 0]
+    text_color:
+      name: Text Colour
+      description: Colour of the text
+      selector:
+        color_rgb:
+      default: [255, 255, 255]
+    show_rainbow:
+      name: Rainbow effect
+      description: Enable the rainbow effect for notification text (overrides text colour)
+      selector:
+        boolean:
+      default: false
+    duration:
+      name: Duration (in Seconds)
+      description: Zero is the default notification time
+      default: "0"
+    sound:
+      name: RTTTL beep
+      description: Since the buzzer sucks, don't try anything fancy! Leaving this empty disables the beep
+      default: "beep:d=4,o=5,b=45:32p,32f#"
+alias: Write Message on Awtrix-Light
+description: ""
+trigger: []
+condition: []
+variables:
+  device_id: !input awtrix_entity
+  my_display: |
+    {{ iif( device_attr(device_id, 'name_by_user') != none, device_attr(device_id, 'name_by_user'), device_attr(device_id, 'name') ) }}
+  msg_icon: !input icon
+  msg_text: !input text
+  push_icon: !input push_icon
+  text_case: !input text_case
+  scroll_speed: !input scroll_speed
+  show_rainbow: !input show_rainbow
+  background_color: !input background_color
+  text_color: !input text_color
+  my_toggle_helper: toggle_helper
+  my_duration: !input duration
+  sound: !input sound
+action:
+  - service: mqtt.publish
+    data:
+      qos: 0
+      retain: false
+      topic: "{{ my_display }}/notify"
+      payload: |-
+        {
+          "text": "{{ msg_text }}",
+          "color": {{text_color}},
+          "background": {{ background_color }},
+          "icon": "{{ msg_icon }}",
+          "textCase": "{{ text_case }}",
+          "scrollSpeed": {{ scroll_speed }},
+          "pushIcon": "{{ push_icon }}",
+          "rainbow": {{ show_rainbow | lower }},
+          "rtttl": "{{ sound }}",
+          "duration": {{ my_duration }}
+        }
+mode: single
