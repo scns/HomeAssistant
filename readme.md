@@ -20,7 +20,7 @@
 
 1. you need to install the [clock-weather-card](https://github.com/pkissling/clock-weather-card)
 2. you need to install the [apexcharts-card](https://github.com/RomRider/apexcharts-card)
-3. you need to install the [Home Assistant Neerlas app](https://github.com/aex351/home-assistant-neerslag-app)
+3. you need to install the [Home Assistant Neerslag app](https://github.com/aex351/home-assistant-neerslag-app)
 4. and of cource change the sensors
 
 ### Complete weather dashboard
