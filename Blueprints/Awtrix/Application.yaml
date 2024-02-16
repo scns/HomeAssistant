@@ -58,7 +58,7 @@ blueprint:
           mode: dropdown
       default: "0"
     scroll_speed:
-      Description: "100 is normal speed, below is slower above is faster"
+      description: "100 is normal speed, below is slower above is faster"
       name: Scroll Speed
       default: "100"
     background_color:
