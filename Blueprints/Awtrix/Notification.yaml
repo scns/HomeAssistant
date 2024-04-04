@@ -12,7 +12,7 @@ blueprint:
           filter:
             - integration: mqtt
               manufacturer: Blueforcer
-              model: "AWTRIX Light"
+              model: "AWTRIX 3"
     icon:
       name: Icon number you want to use on device
       default: "1"
