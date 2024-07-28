@@ -1,0 +1,12 @@
+alias: "Systeem :  Home Assistant  is opnieuw opstart"
+description: ""
+trigger:
+  - platform: homeassistant
+    event: start
+condition: []
+action:
+  - service: notify.notificationonlymaarten
+    data:
+      message: Home assistant is opnieuw opgestart  {{now().strftime('%H:%M')}}
+      title: 🚧 Home Assistant ⚠️  🎉
+mode: single

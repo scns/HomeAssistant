@@ -6,6 +6,14 @@ When you find something you can use, please try to buy me a beer ;)
 
 <a href="https://www.buymeacoffee.com/MaartenSchmeitz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
+# Automations
+
+Where i store my automations
+
+# Blueprints
+
+Here i store my own made Blueprints
+
 # Dashboards
 
 ## Weather

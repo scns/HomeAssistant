@@ -1,0 +1,12 @@
+alias: "Systeem :  Home assistant wordt afgesloten"
+description: ""
+trigger:
+  - platform: homeassistant
+    event: shutdown
+condition: []
+action:
+  - service: notify.notificationonlymaarten
+    data:
+      message: Home assistant wordt afgesloten om  {{now().strftime('%H:%M')}}
+      title: 🚧 Home Assistant ⚠️
+mode: single
