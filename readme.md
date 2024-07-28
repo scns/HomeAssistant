@@ -2,7 +2,7 @@
 
 # Support
 
-When you find something you can use, please try to buy me a beere ;)
+When you find something you can use, please try to buy me a beer ;)
 
 <a href="https://www.buymeacoffee.com/MaartenSchmeitz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
@@ -62,6 +62,6 @@ This script/automation is far from complete an can be enhanced on many whays, so
 
 # Support
 
-When you find something you can use, please try to buy me a beere ;)
+When you find something you can use, please try to buy me a beer ;)
 
 <a href="https://www.buymeacoffee.com/MaartenSchmeitz" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
