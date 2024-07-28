@@ -1,0 +1,249 @@
+views:
+  - title: Sproeiers
+      path: sproeiers
+      cards: []
+      type: sections
+      sections:
+        - type: grid
+          cards:
+            - type: entities
+              entities:
+                - entity: switch.rain_bird_sprinkler_1
+                  name: Grasveld achtertuin 1
+                  secondary_info: last-changed
+                  type: simple-entity
+                - entity: switch.rain_bird_sprinkler_3
+                  name: Grasveld achtertuin 2
+                  type: simple-entity
+                  secondary_info: last-changed
+                - entity: switch.rain_bird_sprinkler_2
+                  name: Grasveld zijkant 1
+                  type: simple-entity
+                  secondary_info: last-changed
+                - entity: switch.rain_bird_sprinkler_4
+                  name: Grasveld zijkant 2
+                  type: simple-entity
+                  secondary_info: last-changed
+                - entity: switch.rain_bird_sprinkler_5
+                  name: Druppelaars opritten
+                  secondary_info: last-changed
+                  type: simple-entity
+                - entity: switch.rain_bird_sprinkler_6
+                  name: Druppelaars tuin/voortuin
+                  secondary_info: last-changed
+                  type: simple-entity
+              title: Welke zone is actief?
+              show_header_toggle: false
+              header:
+                type: picture
+                image: >-
+                  https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+            - type: entities
+              entities:
+                - entity: input_button.grasveld_achtertuin_1_60_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_achtertuin_2_60_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+              title: Op tijd (60 minuten per zone)
+              header:
+                type: picture
+                image: >-
+                  https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+        - type: grid
+          cards:
+            - type: entities
+              entities:
+                - entity: input_button.grasveld_achtertuin_1_15_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_achtertuin_2_15_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_zijkant_1_15_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_zijkant_2_15_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.druppelaars_opritten
+                  name: Druppelaars Opritten 15 minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.druppelaars_tuinen
+                  name: Druppelaars Tuinen 15 minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+              title: Op tijd (15 minuten per zone)
+              header:
+                type: picture
+                image: >-
+                  https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+            - type: entities
+              entities:
+                - entity: input_button.schema_2_alleen_druppels_30_minuten
+                  icon: mdi:sprinkler-variant
+                  name: ' Alleen druppels 30 minuten'
+                - entity: input_button.schema_3_tuin_zijkant_15_minuten
+                  icon: mdi:sprinkler-variant
+                  name: Tuin zijkant 15 minuten
+                - entity: input_button.schema_4_tuin_zijkant_30_minuten
+                  icon: mdi:sprinkler-variant
+                  name: Tuin zijkant 30 minuten
+                - entity: input_button.schema_5_tuin_achter_15_minuten
+                  icon: mdi:sprinkler-variant
+                  name: Tuin achter 15 minuten
+                - entity: input_button.schema_6_tuin_achter_30_minuten
+                  icon: mdi:sprinkler-variant
+                  name: Tuin achter 30 minuten
+                - entity: input_button.schema_7_alleen_grasveld_60_minuten
+                  name: Alleen Grasveld 60 minuten
+                - entity: input_button.schema_8_alleen_grasveld_120_minuten
+                  name: Alleen Grasveld 120 minuten
+              title: Schema's
+              header:
+                type: picture
+                image: >-
+                  https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+        - type: grid
+          cards:
+            - type: entities
+              entities:
+                - entity: input_button.grasveld_achtertuin_1_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_achtertuin_2_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_zijkant_1_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.grasveld_zijkant_2_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.druppelaars_opritten_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+                - entity: input_button.druppelaars_tuinen_30_minuten
+                  secondary_info: last-changed
+                  icon: mdi:sprinkler-variant
+              title: Op tijd (30 minuten per zone)
+              header:
+                type: picture
+                image: >-
+                  https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+            - type: vertical-stack
+              cards:
+                - type: entities
+                  entities: []
+                  header:
+                    type: picture
+                    image: >-
+                      https://www.rainbird.com/sites/default/files/inline-images/SpraysHeader.jpg
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                - type: horizontal-stack
+                  cards:
+                    - type: gauge
+                      entity: sensor.soil_moisture_2
+                      name: Moestuin
+                      unit: '%'
+                      segments:
+                        - from: 0
+                          color: red
+                        - from: 19
+                          color: green
+                        - from: 79
+                          color: blue
+                      needle: true
+                    - type: gauge
+                      entity: sensor.soil_moisture_3
+                      name: Parkeerplaats
+                      unit: '%'
+                      segments:
+                        - from: 0
+                          color: red
+                        - from: 19
+                          color: green
+                        - from: 79
+                          color: blue
+                      needle: true
+                - type: horizontal-stack
+                  cards:
+                    - type: gauge
+                      entity: sensor.soil_moisture_4
+                      unit: '%'
+                      segments:
+                        - from: 0
+                          color: red
+                        - from: 19
+                          color: green
+                        - from: 79
+                          color: blue
+                      needle: true
+                      name: Voortuin
+                    - type: gauge
+                      entity: sensor.soil_moisture_5
+                      unit: '%'
+                      segments:
+                        - from: 0
+                          color: red
+                        - from: 19
+                          color: green
+                        - from: 79
+                          color: blue
+                      needle: true
+                - type: horizontal-stack
+                  cards:
+                    - type: entity
+                      entity: sensor.wind_speed_2
+                    - type: gauge
+                      entity: sensor.wind_speed_2
+                      name: Wind Speed
+                      unit: kmh
+                      segments:
+                        - from: 0
+                          color: green
+                        - from: 5
+                          color: yellow
+                        - from: 10
+                          color: Red
+                      needle: true
+                      max: 15
+            - type: tile
+              entity: input_boolean.druppelaars_tuin_zijkant
+              color: deep-orange
+              vertical: false
+              hide_state: false
+              show_entity_picture: false
+            - type: tile
+              entity: input_boolean.druppelaars_tuin_achter_parkeerplaats
+            - type: tile
+              entity: input_boolean.handmatig_druppelen_in_de_nacht
+        - type: grid
+          cards: []
+      max_columns: 3
+      icon: mdi:sprinkler-variant

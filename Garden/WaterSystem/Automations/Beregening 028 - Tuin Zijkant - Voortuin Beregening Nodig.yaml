@@ -1,0 +1,27 @@
+alias: "Beregening: 028 - Tuin Zijkant / Voortuin Beregening Nodig"
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - sensor.soil_moisture_4
+    below: 28.8
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  - platform: numeric_state
+    entity_id:
+      - sensor.soil_moisture_5
+    below: 29
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+condition: []
+action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id:
+        - input_boolean.druppelaars_tuin_zijkant
+    data: {}
+mode: single

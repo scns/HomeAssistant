@@ -1,0 +1,96 @@
+alias: "Beregening: 021 - Schema 7"
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.schema_7_alleen_grasveld_60_minuten
+    to: null
+condition: []
+action:
+  - service: lawn_mower.dock
+    metadata: {}
+    data: {}
+    target:
+      entity_id: lawn_mower.am415x
+  - wait_for_trigger:
+      - platform: state
+        entity_id:
+          - lawn_mower.am415x
+        to: docked
+        from: null
+    continue_on_timeout: false
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Deel 1 **"
+      message: De beregening is begonnen
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    enabled: true
+    target:
+      entity_id: automation.grasveld_1_15_minuten
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Deel 2 **"
+      message: De beregening is begonnen
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    enabled: true
+    target:
+      entity_id: automation.beregening_grasveld_2_15_minuten
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Deel 3 **"
+      message: De beregening is begonnen
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    enabled: true
+    target:
+      entity_id: automation.beregening_zijkant_15_minuten
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Deel 4 **"
+      message: De beregening is begonnen
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    enabled: true
+    target:
+      entity_id: automation.beregening_zijkant_grasveld_2_15_minuten
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Deel 5 **"
+      message: Grasmaaier gaat weer beginnen
+  - service: lawn_mower.start_mowing
+    data: {}
+    target:
+      entity_id: lawn_mower.am415x
+    enabled: true
+mode: single

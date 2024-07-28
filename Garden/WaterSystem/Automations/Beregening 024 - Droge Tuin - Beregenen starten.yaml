@@ -1,0 +1,90 @@
+alias: "Beregening: 024 - Droge Tuin > Beregenen starten"
+description: ""
+trigger:
+  - platform: time
+    at: "03:00:00"
+    enabled: true
+condition:
+  - condition: or
+    conditions:
+      - condition: state
+        entity_id: input_boolean.druppelaars_tuin_achter_parkeerplaats
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.druppelaars_tuin_zijkant
+        state: "on"
+      - condition: state
+        entity_id: input_boolean.handmatig_druppelen_in_de_nacht
+        state: "on"
+action:
+  - service: notify.telegramooshuuske
+    metadata: {}
+    data:
+      message: Druppelaars beginnen, want droog.
+  - if:
+      - condition: or
+        conditions:
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: input_boolean.druppelaars_tuin_zijkant
+                state: "on"
+              - condition: state
+                entity_id: input_boolean.druppelaars_tuin_achter_parkeerplaats
+                state: "on"
+          - condition: state
+            entity_id: input_boolean.handmatig_druppelen_in_de_nacht
+            state: "on"
+    then:
+      - service: automation.trigger
+        metadata: {}
+        data:
+          skip_condition: true
+        target:
+          entity_id: automation.beregening_014_schema_2
+        enabled: true
+      - service: notify.telegramooshuuske
+        metadata: {}
+        data:
+          message: Druppelaars beginnen, beide zones 30 minuten
+    else:
+      - if:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: input_boolean.druppelaars_tuin_zijkant
+                state: "on"
+        then:
+          - service: automation.trigger
+            metadata: {}
+            data:
+              skip_condition: true
+            enabled: true
+            target:
+              entity_id: automation.beregening_druppelaars_tuinen_30_minuten
+          - service: notify.telegramooshuuske
+            metadata: {}
+            data:
+              message: Druppelaars Zijkant/voortuin, voor 30 minuten
+      - if:
+          - condition: state
+            entity_id: input_boolean.druppelaars_tuin_achter_parkeerplaats
+            state: "on"
+        then:
+          - service: automation.trigger
+            metadata: {}
+            data:
+              skip_condition: true
+            target:
+              entity_id: automation.beregening_druppelaars_opritten_30_minuten
+            enabled: true
+          - service: notify.telegramooshuuske
+            metadata: {}
+            data:
+              message: Druppelaars Opritten voor 30 minuten
+  - service: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.handmatig_druppelen_in_de_nacht
+mode: single

@@ -1,0 +1,47 @@
+alias: "Beregening: 008 - Grasveld Achtertuin 2 30 minuten"
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.grasveld_achtertuin_2_30_minuten
+    to: null
+condition: []
+action:
+  - type: turn_on
+    device_id: 89497d7448e060b8ec4435608aead78e
+    entity_id: aa073787313f23fb19d83c32f37b59ba
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Beregening Grasveld Achtertuin 2 **"
+      message: De beregening is begonnen
+  - service: rainbird.start_irrigation
+    data:
+      duration: 30
+    target:
+      entity_id: switch.rain_bird_sprinkler_3
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - wait_for_trigger: []
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - type: turn_off
+    device_id: 89497d7448e060b8ec4435608aead78e
+    entity_id: aa073787313f23fb19d83c32f37b59ba
+    domain: switch
+  - service: notify.telegramooshuuske
+    data:
+      title: "** Beregening Grasveld Achtertuin 2 **"
+      message: De beregening is klaar
+mode: single

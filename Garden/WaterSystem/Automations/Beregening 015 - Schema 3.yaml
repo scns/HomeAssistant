@@ -1,0 +1,20 @@
+alias: "Beregening: 015 - Schema 3"
+description: Tuin Zijkant 15 minuten
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.schema_3_tuin_zijkant_15_minuten
+    to: null
+condition: []
+action:
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.beregening_zijkant_15_minuten
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.beregening_zijkant_grasveld_2_15_minuten
+mode: single

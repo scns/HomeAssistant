@@ -1,0 +1,20 @@
+alias: "Beregening: 016 - Schema 4"
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.schema_4_tuin_zijkant_30_minuten
+    to: null
+condition: []
+action:
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.beregening_zijkant_grasveld_1_30minuten
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.beregening_zijkant_grasveld_2_30_minuten
+mode: single

@@ -1,0 +1,19 @@
+alias: "Beregening: 026 - Tuin Achter/Parkeerplaats Beregening Nodig"
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - sensor.soil_moisture_3
+    below: 30
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+condition: []
+action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id:
+        - input_boolean.druppelaars_tuin_achter_parkeerplaats
+    data: {}
+mode: single

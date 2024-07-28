@@ -37,9 +37,24 @@ This is the complete code for a new tab in a lovelace dashboard
 6. you need to install the [mini-graph-card]https://github.com/kalkih/mini-graph-card
 
 
-## Afvalwijzer
+### Afvalwijzer
 
 1. you need to install Afvalwijzer
 2. upload the pictures in the www folder
 3. use the yaml code (or make your own ;) )
 4. Use automations to send triggers
+
+## Garden
+
+### Watering System
+
+This is my automation based on a rainbird controller and a groundwater pump.
+This script/automation is far from complete an can be enhanced on many whays, so if you see so, please share
+
+
+
+# Support
+
+When you find something you can use, please try to buy me a beere ;)
+
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="MaartenSchmeitz" data-color="#FFDD00" data-emoji="🍺"  data-font="Cookie" data-text="Buy me a beer" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>

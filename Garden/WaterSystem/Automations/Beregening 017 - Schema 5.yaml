@@ -1,0 +1,20 @@
+alias: "Beregening: 017 - Schema 5"
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.schema_5_tuin_achter_15_minuten
+    to: null
+condition: []
+action:
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.grasveld_1_15_minuten
+  - service: automation.trigger
+    data:
+      skip_condition: true
+    target:
+      entity_id: automation.beregening_grasveld_2_15_minuten
+mode: single

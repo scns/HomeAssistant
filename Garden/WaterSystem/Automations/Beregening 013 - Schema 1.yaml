@@ -1,0 +1,15 @@
+alias: "Beregening: 013 - Schema 1"
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_button.schema_1_druppels_30_en_rest_15
+    to: null
+condition: []
+action:
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+mode: single

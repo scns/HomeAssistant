@@ -1,0 +1,19 @@
+alias: Beregening: "Beregening: 027 - Tuin Zijkant / Voortuin Beregening Niet Nodig"
+description: ""
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - sensor.soil_moisture_4
+    above: 30
+  - platform: numeric_state
+    entity_id:
+      - sensor.soil_moisture_5
+    above: 30
+condition: []
+action:
+  - service: input_boolean.turn_off
+    target:
+      entity_id:
+        - input_boolean.druppelaars_tuin_zijkant
+    data: {}
+mode: single
