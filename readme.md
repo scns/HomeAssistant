@@ -48,6 +48,8 @@ This is the complete code for a new tab in a lovelace dashboard
 
 ### Watering System
 
+![complete weather dashboard](/Garden/WaterSystem/001.jpg "Watersystem")
+
 This is my automation based on a rainbird controller and a groundwater pump.
 This script/automation is far from complete an can be enhanced on many whays, so if you see so, please share
 
