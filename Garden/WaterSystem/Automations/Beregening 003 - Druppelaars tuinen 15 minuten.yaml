@@ -1,4 +1,4 @@
-alias: "Beregening: 003 - Druppelaats tuinen 15 minuten"
+alias: "Beregening: 003 - Druppelaars tuinen 15 minuten"
 description: ""
 trigger:
   - platform: state
