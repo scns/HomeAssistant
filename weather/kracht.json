@@ -1,0 +1,146 @@
+sensor:
+
+    windkracht:
+        friendly_name: Windkracht
+        icon_template: " mdi:weather-windy"
+        value_template: "{% set wind = states('sensor.wind_speed_2')|float %}
+        {% set windms = (wind|float)/3.6 %}
+        {% set wind_round = windms|round(1) %}
+        {% if wind <= 1 %}Bft: 0, Wind stil, {{wind_round}} m/s
+        {% elif wind <= 5 %}Bft: 1, Zwak: flauwe wind, {{wind_round}} m/s
+        {% elif wind <= 11 %}Bft: 2, Zwak, {{wind_round}} m/s
+        {% elif wind <= 20 %}Bft: 3, Matig: lichte bries, {{wind_round}} m/s
+        {% elif wind <= 28 %}Bft: 4, Matig: flauwe bries, {{wind_round}} m/s
+        {% elif wind <= 39 %}Bft: 5, Vrij krachtig, {{wind_round}} m/s
+        {% elif wind <= 50 %}Bft: 6, Krachtig, {{wind_round}} m/s
+        {% elif wind <= 62 %}Bft: 7, Hard, {{wind_round}} m/s
+        {% elif wind <= 75 %}Bft: 8, Stormachting, {{wind_round}} m/s
+        {% elif wind <= 89 %}Bft: 9, Storm, {{wind_round}} m/s
+        {% elif wind <= 103 %}Bft: 10, Zware storm, {{wind_round}} m/s
+        {% elif wind <= 117 %}Bft: 11, Zeer zware storm, {{wind_round}} m/s
+        {% else %} > 117 %}Bft: 12, Orkaan, {{wind_round}} m/s
+        {%- endif %}"
+    windkrachtbft:
+        friendly_name: Windkracht in bft
+        icon_template: " mdi:weather-windy"
+        value_template: "{% set wind = states('sensor.wind_speed_2')|float %}
+        {% set windms = (wind|float)/3.6 %}
+        {% set wind_round = windms|round(1) %}
+        {% if wind <= 1 %}Bft: 0, Wind stil
+        {% elif wind <= 5 %}Bft: 1, Zwak: flauwe wind
+        {% elif wind <= 11 %}Bft: 2, Zwak
+        {% elif wind <= 20 %}Bft: 3, Matig: lichte bries
+        {% elif wind <= 28 %}Bft: 4, Matig: flauwe bries
+        {% elif wind <= 39 %}Bft: 5, Vrij krachtig
+        {% elif wind <= 50 %}Bft: 6, Krachtig
+        {% elif wind <= 62 %}Bft: 7, Hard
+        {% elif wind <= 75 %}Bft: 8, Stormachting
+        {% elif wind <= 89 %}Bft: 9, Storm
+        {% elif wind <= 103 %}Bft: 10, Zware storm
+        {% elif wind <= 117 %}Bft: 11, Zeer zware storm
+        {% else %} > 117 %}Bft: 12, Orkaan
+        {%- endif %}"
+    windstoten:
+        friendly_name: Windstoten
+        icon_template: " mdi:weather-windy"
+        value_template: "{% set wind = states('sensor.wind_gust_2')|float %}
+        {% set windms = (wind|float)/3.6 %}
+        {% set wind_round = windms|round(1) %}
+        {% if wind <= 1 %}Bft: 0, Wind stil, {{wind_round}} m/s
+        {% elif wind <= 5 %}Bft: 1, Zwak: flauwe wind, {{wind_round}} m/s
+        {% elif wind <= 11 %}Bft: 2, Zwak, {{wind_round}} m/s
+        {% elif wind <= 20 %}Bft: 3, Matig: lichte bries, {{wind_round}} m/s
+        {% elif wind <= 28 %}Bft: 4, Matig: flauwe bries, {{wind_round}} m/s
+        {% elif wind <= 39 %}Bft: 5, Vrij krachtig, {{wind_round}} m/s
+        {% elif wind <= 50 %}Bft: 6, Krachtig, {{wind_round}} m/s
+        {% elif wind <= 62 %}Bft: 7, Hard, {{wind_round}} m/s
+        {% elif wind <= 75 %}Bft: 8, Stormachting, {{wind_round}} m/s
+        {% elif wind <= 89 %}Bft: 9, Storm, {{wind_round}} m/s
+        {% elif wind <= 103 %}Bft: 10, Zware storm, {{wind_round}} m/s
+        {% elif wind <= 117 %}Bft: 11, Zeer zware storm, {{wind_round}} m/s
+        {% else %} > 117 %}Bft: 12, Orkaan, {{wind_round}} m/s
+        {%- endif %}"
+    windstotenbft:
+        friendly_name: Windstoten in bft
+        icon_template: " mdi:weather-windy"
+        value_template: "{% set wind = states('sensor.wind_gust_2')|float %}
+        {% set windms = (wind|float)/3.6 %}
+        {% set wind_round = windms|round(1) %}
+        {% if wind <= 1 %}Bft: 0, Wind stil
+        {% elif wind <= 5 %}Bft: 1, Zwak: flauwe wind
+        {% elif wind <= 11 %}Bft: 2, Zwak
+        {% elif wind <= 20 %}Bft: 3, Matig: lichte bries
+        {% elif wind <= 28 %}Bft: 4, Matig: flauwe bries
+        {% elif wind <= 39 %}Bft: 5, Vrij krachtig
+        {% elif wind <= 50 %}Bft: 6, Krachtig
+        {% elif wind <= 62 %}Bft: 7, Hard
+        {% elif wind <= 75 %}Bft: 8, Stormachting
+        {% elif wind <= 89 %}Bft: 9, Storm
+        {% elif wind <= 103 %}Bft: 10, Zware storm
+        {% elif wind <= 117 %}Bft: 11, Zeer zware storm
+        {% else %} > 117 %}Bft: 12, Orkaan
+        {%- endif %}"
+    windvlagenmax:
+        friendly_name: "Max windvlaag dag"
+        icon_template: " mdi:weather-windy"
+        value_template: "{% set wind = states('sensor.max_daily_wind_gust_2')|float %}
+        {% set windms = (wind|float)/3.6 %}
+        {% set wind_round = windms|round(1) %}
+        {% if wind <= 1 %}Bft: 0, Wind stil
+        {% elif wind <= 5 %}Bft: 1, Zwak: flauwe wind
+        {% elif wind <= 11 %}Bft: 2, Zwak
+        {% elif wind <= 20 %}Bft: 3, Matig: lichte bries
+        {% elif wind <= 28 %}Bft: 4, Matig: flauwe bries
+        {% elif wind <= 39 %}Bft: 5, Vrij krachtig
+        {% elif wind <= 50 %}Bft: 6, Krachtig
+        {% elif wind <= 62 %}Bft: 7, Hard
+        {% elif wind <= 75 %}Bft: 8, Stormachting
+        {% elif wind <= 89 %}Bft: 9, Storm
+        {% elif wind <= 103 %}Bft: 10, Zware storm
+        {% elif wind <= 117 %}Bft: 11, Zeer zware storm
+        {% else %} > 117 %}Bft: 12, Orkaan
+        {%- endif %}"        
+    windrichting:
+        friendly_name: "Windrichting"
+        icon_template: " mdi:compass"
+        value_template: >
+          {% set dir = states('sensor.wind_direction')|float %}
+          {% if 11.25 < dir <= 33.75 %} Noord Noord Oost
+          {% elif 33.75 < dir <= 56.25 %} Noord Oost
+          {% elif 56.25 < dir <= 78.75 %} Oost Noord Oost
+          {% elif 78.75 < dir <= 101.25 %} Oost
+          {% elif 101.25 < dir <= 123.75 %} Oost Zuid Oost
+          {% elif 123.75 < dir <= 146.25 %} Zuid Oost
+          {% elif 146.25 < dir <= 168.75 %} Zuid Zuid Oost
+          {% elif 168.75 < dir <= 191.25 %} Zuid
+          {% elif 191.25 < dir <= 213.75 %} Zuid Zuid West
+          {% elif 213.75 < dir <= 236.25 %} Zuid West
+          {% elif 236.25 < dir <= 258.75 %} West Zuid West
+          {% elif 258.75 < dir <= 281.25 %} West
+          {% elif 281.25 < dir <= 303.75 %} West Noord West
+          {% elif 303.75 < dir <= 326.25 %} Noord West
+          {% elif 326.25 < dir <= 348.75 %} Noord Noord West
+          {% else %} Noord
+          {% endif %}
+    windrichtingshort:
+        friendly_name: "WindrichtingKort"
+        icon_template: " mdi:compass"
+        value_template: >
+          {% set dir = states('sensor.wind_direction')|float %}
+          {% if 11.25 < dir <= 33.75 %} N-NO
+          {% elif 33.75 < dir <= 56.25 %} NO
+          {% elif 56.25 < dir <= 78.75 %} O-NO
+          {% elif 78.75 < dir <= 101.25 %} O
+          {% elif 101.25 < dir <= 123.75 %} O-ZO
+          {% elif 123.75 < dir <= 146.25 %} ZO
+          {% elif 146.25 < dir <= 168.75 %} Z-ZO
+          {% elif 168.75 < dir <= 191.25 %} Z
+          {% elif 191.25 < dir <= 213.75 %} Z-ZW
+          {% elif 213.75 < dir <= 236.25 %} ZW
+          {% elif 236.25 < dir <= 258.75 %} W-ZW
+          {% elif 258.75 < dir <= 281.25 %} W
+          {% elif 281.25 < dir <= 303.75 %} W-NW
+          {% elif 303.75 < dir <= 326.25 %} NW
+          {% elif 326.25 < dir <= 348.75 %} N-NW
+          {% else %} N
+          {% endif %}
